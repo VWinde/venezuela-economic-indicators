@@ -236,8 +236,8 @@ fig1.add_trace(go.Scatter(x=df_filtered.index, y=neg, fill='tozeroy',
     fillcolor='rgba(192,57,43,0.2)', line=dict(color='rgba(0,0,0,0)'), showlegend=False))
 
 fig1.add_trace(go.Scatter(x=df_filtered.index, y=df_filtered['gdp_growth'],
-                          name="Venezuela", line=dict(color=NAVY), width=2.5),
-               hovertemplate="<b>%{x}</b>GDP Growth: %{y:.1f}%<extra></extra>"))
+    name="Venezuela", line=dict(color=NAVY, width=2.5),
+    hovertemplate="<b>%{x}</b><br>GDP Growth: %{y:.1f}%<extra></extra>"))
 
 latam_data=df_filtered['latam_gdp_growth'].dropna()
 fig1.add_trace(go.Scatter(x=latam_data.index, y=latam_data,
