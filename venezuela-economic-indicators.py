@@ -246,11 +246,12 @@ fig1.add_trace(go.Scatter(x=latam_data.index, y=latam_data,
 
 fig1.add_hline(y=0, line_dash="dash", line_color=GRAY, line_width=1, opacity=0.6)
 fig1.update_layout(height=420, plot_bgcolor='white', paper_bgcolor='white',
-                   yaxis_title="Annual GDP Growth (%)", xaxis_title="",
-                   legend_dict(x=0.02, y=0.98, bgcolor='rgba(255,255,255,0.8)'),
-                   hovermode='x unified')
-fig1.update_xaxes(showgrid=False); fig1.update_yaxes(showgrid= True, gridcolor='#FOFOFO')
+    yaxis_title="Annual GDP Growth (%)", xaxis_title="",
+    legend=dict(x=0.02, y=0.98, bgcolor='rgba(255,255,255,0.8)'),
+    hovermode='x unified')
+fig1.update_xaxes(showgrid=False); fig1.update_yaxes(showgrid=True, gridcolor='#F0F0F0')
 st.plotly_chart(fig1, use_container_width=True)
+
 
 #----- Chart 2: Inflation --------------------------------------
 st.markdown("### 🔥 Inflation: The Hyperinflation Episode")
@@ -405,7 +406,7 @@ st.markdown("---")
 st.markdown("""
 <div style='text-align: center; color: #888; font-size: 13px; padding: 12px;'>
 Built by <b>Vilma Windevoxchel</b> · Data: World Bank WDI, IMF WEO Oct 2025, OPEC/EIA, CEPAL · 
-<a href='https://linkedin.com/in/vilmaw-139561135' target='_blank'>LinkedIn</a> · 
+<a href='https://www.linkedin.com/in/vilma-windevoxchel/' target='_blank'>LinkedIn</a> · 
 <a href='https://github.com/VWinde' target='_blank'>GitHub</a>
 </div>
 """, unsafe_allow_html=True)()
