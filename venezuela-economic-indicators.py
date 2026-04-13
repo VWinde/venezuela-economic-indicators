@@ -231,9 +231,9 @@ pos = df_filtered['gdp_growth'].copy(); pos[pos<0] =0
 neg = df_filtered['gdp_growth'].copy(); neg[neg>0] =0
 
 fig1.add_trace(go.Scatter(x=df_filtered.index, y=pos, fill='tozeroy',
-                          fillcolor='rgba(39,174,96,0.2'), line_dict(color='rgba(0,0,0,0)'), showlegend=False)
+    fillcolor='rgba(39,174,96,0.2)', line=dict(color='rgba(0,0,0,0)'), showlegend=False))
 fig1.add_trace(go.Scatter(x=df_filtered.index, y=neg, fill='tozeroy',
-                          fillcolor='rgba(192,57,43,0.2)', line=dict(color='rgba(0,0,0,0)'), showlegend=False)
+    fillcolor='rgba(192,57,43,0.2)', line=dict(color='rgba(0,0,0,0)'), showlegend=False))
 
 fig1.add_trace(go.Scatter(x=df_filtered.index, y=df_filtered['gdp_growth'],
                           name="Venezuela", line=dict(color=NAVY), width=2.5),
