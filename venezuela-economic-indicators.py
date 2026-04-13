@@ -37,7 +37,7 @@ st.markdown("""
                                  .metric-label{font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 0.5px; }
                                                .metric-delta-pos{font-size: 13px; color: #27AE60;}
                                                                  .metric-delta-neg{font-size: 13px; color=#C0392B;}
-                                                                                   -insight-box{
+                                                                                   .insight-box{
                                                                                        background: #EBF5FB;
                                                                                        border-left: 4px solid #2E86AB;
                                                                                        border-radius: 6px;
@@ -49,7 +49,7 @@ st.markdown("""
                                                                                        background: #FEF9E7;
                                                                                        border-left: 4px solid #E8A838;
                                                                                        border-radius: 6px;
-                                                                                       padding: 12px 6 px;
+                                                                                       padding: 12px 6px;
                                                                                        margin: 8px 0;
                                                                                        font-size: 14px;
                                                                                        }
@@ -108,7 +108,7 @@ def load_data():
 df= pd.DataFrame(data).set_index('year')
 return df
 
-df=load.data()
+df=load_data()
 
 #--------- Sidebar ---------------
 with st.sidebar:
@@ -136,7 +136,7 @@ with st.sidebar:
                 
 #---------- Header ---------------------
 st.markdown("# ve Venezuela Economic Indicators Dashboard")
-st.markdown(f"**Period shown:** {year_range[0] - year_range[1]} · Data: World Bank WDI, IMF WEO 2025")
+st.markdown(f"**Period shown:** {year_range[0]} - {year_range[1]} · Data: World Bank WDI, IMF WEO 2025")
 st.markdown("---")
 
 #---------- KPI Cards ------------------
@@ -153,7 +153,7 @@ with col1:
               f"{delta:+.1f}pp vs 2023")
     
 with col2:
-    st.metric("Inflation (CPI)", f"{latest['inflation']:.1f}%"
+    st.metric("Inflation (CPI)", f"{latest['inflation']:.1f}%",
               f"{latest['inflation']-prev['inflation']:+.1f}pp vs 2023",
               delta_color="inverse")
 
@@ -184,7 +184,7 @@ with col_a:
                 <b> Economic Contraction </b><br>
                 GDP per capita collapsed <b>{decline: .0f}%</b> from its 2013 peak of
                 <b>${peak_gdp:,.0f}</b> to <b>${latest['gdp_per_capita_usd']:,.0f}</b> in 2024 -
-                one of the largest contractions in Latin American history outside war contexts.)
+                one of the largest contractions in Latin American history outside war contexts.
     </div>
     """, unsafe_allow_html=True)
     
@@ -289,7 +289,7 @@ with col_oil1:
                            name="Oil Production (kbd)", marker_color=ORANGE, opacity=0.75,
                            hovertemplate="<b>%{x}</b><br>Production: %{y:,.0f} kbd<extra></extra>"),
                     secondary_y=False)
-    figa3.add_trace(go.Scatter(x=df_filtered.index, y=df_filtered['oil_rents_pct_gdp'],
+    fig3a.add_trace(go.Scatter(x=df_filtered.index, y=df_filtered['oil_rents_pct_gdp'],
                                name="Oil Rents (% GDP)", line=dict(color=NAVY, width=2.5),
                                hovertemplate="<b>%{x}</b><br>Oil Rents: %{y:.1f}%<extra></extra>"),
                     secondary_y=True)
@@ -304,12 +304,12 @@ with col_oil2:
     scatter_df=df_filtered[['oil_rents_pct_gdp','gdp_growth']].dropna()
     colors_sc=[GREEN if g > 0 else RED for g in scatter_df['gdp_growth']]
     fig3b=go.Figure()
-    fig3b.add_trace(go.Scatter(x.scatter_df['oil_rents_pct_gdp'],
+    fig3b.add_trace(go.Scatter(x=scatter_df['oil_rents_pct_gdp'],
                                y=scatter_df['gdp_growth'], mode='markers+text',
                                marker=dict(color=colors_sc, size=9, opacity=0.8,
                                            line=dict(color='white', width=1)),
                                text=scatter_df.index.astype(str),
-                               textposition='top center', textfront=dict(size=7),
+                               textposition='top center', textfont=dict(size=7),
                                hovertemplate="<b>%{text}</b><br>Oil Rents: %{x:.1f}%<br>GDP Growth: %{y:.1f}%<extra></extra>"))
     z= np.polyfit(scatter_df['oil_rents_pct_gdp'], scatter_df['gdp_growth'], 1)
     xline= np.linspace(scatter_df['oil_rents_pct_gdp'].min(), scatter_df['oil_rents_pct_gdp'].max(),100)
@@ -333,10 +333,10 @@ with col_soc1:
                                fill='tozeroy', fillcolor='rgba(232,168,56,0.2)',
                                line=dict(color=ORANGE, width=2.5),
                                hovertemplate="<b>%{x}</b>Unemployment: %{y:.1f}%<extra></extra>"))
-    fig4.update_layout(height=340, plot_bgcolor='white', paper_bgcolor='white',
+    fig4a.update_layout(height=340, plot_bgcolor='white', paper_bgcolor='white',
                   title="Unemployment Rate (%')", yaxis_title="% of Labor Force",
                   showlegend=False)
-    fig4a.update_xaxes(showgrid=False); fig4.update.yaxes(showgrid=True, gridcolor='#F0F0F0')
+    fig4a.update_xaxes(showgrid=False); fig4a.update.yaxes(showgrid=True, gridcolor='#F0F0F0')
     st.plotly_chart(fig4a, use_container_width=True)
     
 with col_soc2:
@@ -409,5 +409,4 @@ Built by <b>Vilma Windevoxchel</b> · Data: World Bank WDI, IMF WEO Oct 2025, OP
 <a href='https://www.linkedin.com/in/vilma-windevoxchel/' target='_blank'>LinkedIn</a> · 
 <a href='https://github.com/VWinde' target='_blank'>GitHub</a>
 </div>
-""", unsafe_allow_html=True)()
-    
+""", unsafe_allow_html=True))
