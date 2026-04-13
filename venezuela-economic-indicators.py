@@ -25,13 +25,13 @@ st.set_page_config(
 #------- Custom CSS -----------
 st.markdown(""" 
             <style>
-            .main{backgrounf-color: #F8F9FA;}
-                  metric-card{
+            .main{background-color: #F8F9FA;}
+                 .metric-card{
                       background: white;
                       border-radius: 10px;
                       padding: 16px 20px;
                       box-shadow: 0 2px 8px rgba(0, 0, 0,0.08);
-                      border-left: 4px, solid #1A3A5C;
+                      border-left: 4px solid #1A3A5C;
                       }
                   .metric-value {font-size: 29px; font-weight: 700; color: #1A3A5C;}
                                  .metric-label{font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 0.5px; }
