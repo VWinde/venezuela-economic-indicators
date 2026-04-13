@@ -409,4 +409,4 @@ Built by <b>Vilma Windevoxchel</b> · Data: World Bank WDI, IMF WEO Oct 2025, OP
 <a href='https://www.linkedin.com/in/vilma-windevoxchel/' target='_blank'>LinkedIn</a> · 
 <a href='https://github.com/VWinde' target='_blank'>GitHub</a>
 </div>
-""", unsafe_allow_html=True))
+""", unsafe_allow_html=True)
