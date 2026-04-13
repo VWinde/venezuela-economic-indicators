@@ -216,7 +216,7 @@ st.markdown("---")
 
 st.markdown("### GDP Growth: Venezuela vs Latin America")
 
-fig1= go.figure()
+fig1= go.Figure()
 
 # Recession shading
 for start, end, label in [(1994, 1996, "Banking crisis"), (1999, 2003, "Chávez Period I"), (2013, 2020, "Economic Collapse"), 
