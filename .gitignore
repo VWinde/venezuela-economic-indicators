@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Data (keep raw data local, not in repo)
+data/raw/*.csv
+data/raw/*.xlsx
+data/processed/*.csv
+
+# Outputs
+outputs/figures/*.png
+outputs/figures/*.jpg
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
