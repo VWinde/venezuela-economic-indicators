@@ -105,8 +105,8 @@ def load_data():
                               5.8,4.5,2.9,2.8,1.3,0.3,-0.6,1.3,1.0,-0.1,
                               -6.8,6.9,3.9,2.1,2.2],
     }
-df= pd.DataFrame(data).set_index('year')
-return df
+    df= pd.DataFrame(data).set_index('year')
+    return df
 
 df=load_data()
 
@@ -329,14 +329,14 @@ col_soc1, col_soc2 = st.columns(2)
 
 with col_soc1:
     fig4a=go.Figure()
-    fig4a.add_trace(go.Scatter(x=df.filtered.index, y=df_filtered['unemployment_rate'],
+    fig4a.add_trace(go.Scatter(x=df_filtered.index, y=df_filtered['unemployment_rate'],
                                fill='tozeroy', fillcolor='rgba(232,168,56,0.2)',
                                line=dict(color=ORANGE, width=2.5),
                                hovertemplate="<b>%{x}</b>Unemployment: %{y:.1f}%<extra></extra>"))
     fig4a.update_layout(height=340, plot_bgcolor='white', paper_bgcolor='white',
                   title="Unemployment Rate (%')", yaxis_title="% of Labor Force",
                   showlegend=False)
-    fig4a.update_xaxes(showgrid=False); fig4a.update.yaxes(showgrid=True, gridcolor='#F0F0F0')
+    fig4a.update_xaxes(showgrid=False); fig4a.update_yaxes(showgrid=True, gridcolor='#F0F0F0')
     st.plotly_chart(fig4a, use_container_width=True)
     
 with col_soc2:
